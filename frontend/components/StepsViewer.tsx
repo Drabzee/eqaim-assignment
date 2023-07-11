@@ -16,7 +16,7 @@ export default function StepsViewer() {
             <SyntaxHighlighter className="text-sm m-0 mb-5" language="json" style={rainbow}>
                 {JSON.stringify(stepsObj, null, 1)}
             </SyntaxHighlighter>
-            <button className="block ml-auto text-sm shadow text-white hover:bg-violet-400 focus:shadow-outline focus:outline-none py-2 px-4 rounded border-2 bg-violet-500" type="button">
+            <button className="block ml-auto text-sm shadow text-white hover:bg-violet-400 focus:shadow-outline focus:outline-none py-3 px-5 rounded bg-violet-500" type="button">
                 Save result to DB
             </button>
         </section>
