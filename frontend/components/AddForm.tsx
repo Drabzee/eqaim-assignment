@@ -9,12 +9,13 @@ export default function AddForm(props: { setStepsSum: Dispatch<SetStateAction<TS
   const formSubmitHandler = async (e: FormEvent<HTMLFormElement> & { target: { num1: HTMLInputElement, num2: HTMLInputElement } }) => {
     e.preventDefault();
 
+    // Fetched values as ref and not as state hook to save extra rerendering
     const num1 = e.target.num1.value;
     const num2 = e.target.num2.value;
 
     try {
       const { data } = await axios.post<any,ApiResponse<TStepsSum>>('/steps-sum', {
-        num1, num2
+        num1, num2, toSaveInDB: false
       }, {
         headers: {
           'Content-Type': 'application/json',

@@ -83,4 +83,7 @@ export const getSumSteps = (num1: string, num2: string): TStepsSum => {
     };
 }
 
-export const isNumeric = (num: string) => num.match(/^\d+$/);
+export const isPositiveNumeric = (num: string) => {
+    let isNumber = num.match(/^\d+$/);
+    return isNumber && ((+num) >= 0);
+}
