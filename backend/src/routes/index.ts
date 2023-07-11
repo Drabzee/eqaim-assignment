@@ -3,14 +3,14 @@ import { getSumSteps, isNumeric } from '../utils/number_handler';
 
 const router = express.Router();
 
-router.get('/step-sums', (req: Request, res: Response) => {
+router.get('/steps-sum', (req: Request, res: Response) => {
     return res.json({
         success: true,
         msg: 'Hello, world!'
     });
 });
 
-router.post('/step-sums', (req: Request<{}, {}, { num1: string, num2: string }>, res: Response) => {
+router.post('/steps-sum', (req: Request<{}, {}, { num1: string, num2: string }>, res: Response) => {
     const { num1, num2 } = req.body;
 
     if (!(isNumeric(num1) && isNumeric(num2))) {

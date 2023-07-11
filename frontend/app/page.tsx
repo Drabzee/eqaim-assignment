@@ -1,17 +1,21 @@
+'use client';
+
 import AddForm from '@/components/AddForm';
+import Header from '@/components/Header';
 import StepsViewer from '@/components/StepsViewer';
+import { TSteps } from '@/types';
+import { useState } from 'react';
 
 export default function Home() {
+  const [ stepsSum, setStepsSum ] = useState<TSteps | null>(null);
+
   return (
     <main>
+      <Header />
 
-      <header className='py-5 px-10 bg-gray-200'>
-        <h1 className='text-3xl font-extrabold'>Step Addition</h1>
-      </header>
+      <AddForm setStepsSum={setStepsSum} />
 
-      <AddForm />
-
-      <StepsViewer />
+      <StepsViewer stepsSum={stepsSum} />
     </main>
   );
 }

@@ -5,6 +5,12 @@ type TSteps = {
     }
 };
 
+type TStepsSum = {
+    num1: string,
+    num2: string,
+    steps: TSteps
+};
+
 const cleanNumberString = (num: string): string => {
     let cleanedNum = num.replace(/^0+/, '');
 
@@ -47,17 +53,21 @@ const addNumbersStepByStep = (num1: string, num2: string): TSteps => {
     return steps;
 }
 
-export const getSumSteps = (num1: string, num2: string): TSteps => {
+export const getSumSteps = (num1: string, num2: string): TStepsSum => {
     let cleanedNum1 = cleanNumberString(num1);
     let cleanedNum2 = cleanNumberString(num2);
 
     if (cleanedNum1 === '0' || cleanedNum2 === '0') {
         return {
-            step1: {
-                carryString: '_',
-                sumString: ((+cleanedNum1) + (+cleanedNum2)).toString()
+            num1: num1,
+            num2: num2,
+            steps: {
+                step1: {
+                    carryString: '_',
+                    sumString: ((+cleanedNum1) + (+cleanedNum2)).toString()
+                }
             }
-        } as TSteps;
+        } as TStepsSum;
     }
     
     if (cleanedNum1.length > cleanedNum2.length) {
@@ -66,7 +76,11 @@ export const getSumSteps = (num1: string, num2: string): TSteps => {
         cleanedNum1 = "0".repeat(cleanedNum2.length - cleanedNum1.length) + cleanedNum1
     }
     
-    return addNumbersStepByStep(cleanedNum1, cleanedNum2);
+    return {
+        num1: num1,
+        num2: num2,
+        steps: addNumbersStepByStep(cleanedNum1, cleanedNum2)
+    };
 }
 
 export const isNumeric = (num: string) => num.match(/^\d+$/);
