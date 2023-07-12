@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { getSumSteps, isPositiveNumeric } from "../utils/number_handler";
-import sequelize from "../helpers/db";
 import { Sum } from "../models/Sum";
 
 export const fetchAllStepsSum = async (req: Request<{}, {}, {}, { page?: string, size?: string }>, res: Response, next: NextFunction) => {
