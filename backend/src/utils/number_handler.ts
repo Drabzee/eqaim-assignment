@@ -1,4 +1,4 @@
-type TSteps = {
+export type TSteps = {
     [key: `step${number}`]: {
         carryString: string,
         sumString: string,
